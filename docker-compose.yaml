@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo:5.0.0-rc3-focal
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - ./mongodb/db_files:/data/db
+
+  mongo-express:
+    image: mongo-express:1.0.0-alpha.4
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+
+  client:
+    build: ./client
+    stdin_open: true
+    tty: true
+    ports:
+      - 8080:8080
+    volumes:
+      - "/app/node_modules"
+      - "./client:/app"
+
+  server:
+    build: ./server
+    stdin_open: true
+    tty: true
+    ports:
+      - 5000:5000
+    volumes:
+      - "/app/node_modules"
+      - "./server:/app"

@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "concurrently": "^6.2.0"
+  },
+  "name": "vue-auth",
+  "description": "Authentication using VueJs 2, Express. Api, Jwt, Mongo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gallaguz/node-vue-auth.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gallaguz/node-vue-auth/issues"
+  },
+  "homepage": "https://github.com/gallaguz/node-vue-auth#readme"
+}
